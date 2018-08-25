@@ -9,9 +9,9 @@
     <div class="col-12 col-md-4">
         <h2>{{Auth::user()->name}}&nbsp;{{Auth::user()->last_name}}</h2>
         <hr />
-        <img src="{{asset('img/defaultuser.jpg')}}" alt="Avatar" class="avatar">
+        <img src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}" alt="Avatar" class="avatar margenInferior">
         <div class="row margenInferior">
-            <a href="" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-edit "></span>&nbsp;Editar Perfil</a>
+            <a href="/edituser" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-edit "></span>&nbsp;Editar Perfil</a>
             <a href="" href="{{ route('logout') }}" class="btn btn-lg btn-block btn-warning btnPrincipal" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="fa fa-sign-out-alt "></span>&nbsp; Salir</a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf

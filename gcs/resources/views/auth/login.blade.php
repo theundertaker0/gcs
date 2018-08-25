@@ -57,7 +57,7 @@
                     </a>
                 </div>
                 <div class="col-12">
-                    <a class="btn btn-link" href="{{ route('register') }}"">
+                    <a class="btn btn-link" href="{{ route('register') }}">
                     {{ __('Crear una cuenta') }}
                     </a>
                 </div>

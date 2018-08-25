@@ -35,7 +35,7 @@
                             <label for="last_name">{{ __('Apellidos') }}</label>
                             <input id="last_name" type="text" class="form-control{{ $errors->has('last_name') ? ' is-invalid' : '' }}" name="last_name" value="{{ old('last_name') }}" autofocus>
 
-                            @if ($errors->has('name'))
+                            @if ($errors->has('last_name'))
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('lastname') }}</strong>
                                     </span>
@@ -78,7 +78,7 @@
                             <label for="address">{{ __('Dirección') }}</label>
                             <input id="address" type="text" class="form-control{{ $errors->has('address') ? ' is-invalid' : '' }}" name="address" value="{{ old('address') }}" autofocus>
 
-                            @if ($errors->has('name'))
+                            @if ($errors->has('address'))
                                 <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('address') }}</strong>
                                     </span>

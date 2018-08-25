@@ -19,3 +19,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 Route::get('/','IndexController@index');
+
+Route::get('edituser','AdminUsersController@edit');
+Route::post('/storeuser','AdminUsersController@store')->name('storeuser');
