@@ -8,9 +8,12 @@ use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index(){
-        $bills=Bill::where('id',1)->products;
-        $nombres=['juan','Melqui','sagundo'];
-        return view('index')->with('bills',$bills);
+       return view('index');
     }
 }

@@ -1,0 +1,31 @@
+.primaryColor{
+    color:#fe4600;
+}
+
+.margenInferior{
+    margin-bottom: 1em;
+}
+
+.paddingSuperiorGrande{
+    padding-top: 5em;
+}
+
+.paddingSuperior{
+    padding-top: 1em;
+}
+
+.avatar{
+    max-width: 150px;
+    max-height: 150px;
+    border-radius: 50%;
+}
+
+.btnPrincipal{
+    background-color: #fe4600;
+    color:#FFF;
+    font-weight: bold;
+}
+
+.logomediano{
+    max-width: 300px;
+}
