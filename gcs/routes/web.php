@@ -22,3 +22,7 @@ Route::get('/','IndexController@index');
 
 Route::get('edituser','AdminUsersController@edit');
 Route::post('/storeuser','AdminUsersController@store')->name('storeuser');
+
+Route::get('/changepass','AdminUsersController@editpass')->name('changepass');
+
+Route::post('/updatepass','AdminUsersController@updatepass')->name('updatepass');

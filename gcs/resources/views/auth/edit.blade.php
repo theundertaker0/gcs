@@ -11,11 +11,10 @@
     <div class="row text-center margenInferior paddingSuperior">
         <div class="col-12">
             @if(session('success'))
-            <p class="alert-success">{{session('success')}}</p>
+            <p class="alert-success">{{session('success')}}<a href="{{url('/')}}" class="btn btn-link"> Regresar a página principal</a></p>
             @endif
-            <img src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}"" alt="Logo GCS" class="avatar">
+            <img src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}" alt="Logo GCS" class="avatar">
         </div>
-
     </div>
 
     <div class="row">
@@ -29,10 +28,15 @@
                             <span class="input-group-text">Avatar</span>
                         </div>
                         <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="avatar" name="avatar">
-                            <label class="custom-file-label" for="avatar">Seleccionar imagen</label>
+                            <input type="file" class="custom-file-input" id="avatar" name="avatar" accept="image/*">
+                            <label class="custom-file-label" for="avatar" id="labelFile">Seleccionar imagen (Max. 2MB)</label>
                         </div>
                     </div>
+                    @if ($errors->has('avatar'))
+                        <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $errors->first('avatar') }}</strong>
+                                    </span>
+                    @endif
                 </div>
                 <div class="form-group row">
                     <label for="name">{{ __('Nombre') }}*</label>
@@ -154,7 +158,7 @@
             </form>
             <div class="row text-center">
                 <div class="col-12">
-                    <a href="" class="btn btn-link">Si necesita cambiar su contraseña de clic en este enlace</a>
+                    <a href="{{route('changepass')}}" class="btn btn-link">Si necesita cambiar su contraseña de clic en este enlace</a>
                 </div>
             </div>
         </div>
@@ -167,5 +171,8 @@
             $('.state').select2();
         });
         $('.state').val("{{$user->state}}").trigger('change');
+
     </script>
+
+
 @endsection
