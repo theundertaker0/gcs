@@ -38,3 +38,14 @@
     border: 1px solid #ced4da;
     position: relative;
 }
+
+.btn-warning{
+border: 1px solid #E82A0C;
+}
+
+.btn-warning:hover{
+    background-color: #E82A0C;
+    color:#FFF;
+    border: 1px solid #E82A0C;
+}
+

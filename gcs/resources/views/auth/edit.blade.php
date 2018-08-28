@@ -23,15 +23,7 @@
                 @csrf
 
                 <div class="form-group row">
-                    <div class="input-group mb-3">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">Avatar</span>
-                        </div>
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="avatar" name="avatar" accept="image/*">
-                            <label class="custom-file-label" for="avatar" id="labelFile">Seleccionar imagen (Max. 2MB)</label>
-                        </div>
-                    </div>
+                    <input type="file" class="" id="avatar" name="avatar" accept="image/*">
                     @if ($errors->has('avatar'))
                         <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('avatar') }}</strong>
@@ -169,6 +161,14 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $('#state').select2();
+            $('#avatar').fileselect({
+                language:'en',
+                allowedNumberOfFiles: 1, // default: false, no limitation
+                allowedFileExtensions: ['jpg','png','gif','jpeg'],// default: false, all extensions allowed
+                allowedFileSize: 2097152, // 2MB, default: false, no limitation
+                browseBtnClass: 'btn btn-warning btnPrincipal',
+            });
+            $('.input-group-btn span').html("Seleccionar");
         });
         $('.state').val("{{$user->state}}").trigger('change');
 
