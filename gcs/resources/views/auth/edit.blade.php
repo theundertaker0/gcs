@@ -162,13 +162,13 @@
         $(document).ready(function(){
             $('#state').select2();
             $('#avatar').fileselect({
-                language:'en',
+                language:'es',
                 allowedNumberOfFiles: 1, // default: false, no limitation
                 allowedFileExtensions: ['jpg','png','gif','jpeg'],// default: false, all extensions allowed
                 allowedFileSize: 2097152, // 2MB, default: false, no limitation
                 browseBtnClass: 'btn btn-warning btnPrincipal',
             });
-            $('.input-group-btn span').html("Seleccionar");
+
         });
         $('.state').val("{{$user->state}}").trigger('change');
 
