@@ -100,7 +100,7 @@
 
                             <div class="form-group col-4" style="padding: 0px">
                                 <label for="state">{{ __('Estado') }}</label>
-                                <select name="state" id="state" class="form-control state" value="{{ old('state') }}" autofocus>
+                                <select name="state" id="state" class="" value="{{ old('state') }}" autofocus>
                                     <option value="null">Seleccione...</option>
                                     <option value="Aguascalientes">Aguascalientes</option>
                                     <option value="Baja California">Baja California</option>
@@ -137,7 +137,7 @@
                                 </select>
                             </div>
 
-                            <div class="form-group col-4" style="padding-right: 0px">
+                            <div class="form-group col-4" style="padding-right: 0px;padding-left: 0px;">
                                 <label for="cp">{{ __('CP') }}</label>
                                 <input id="cp" type="text" class="form-control{{ $errors->has('cp') ? ' is-invalid' : '' }}" name="cp" value="{{ old('cp') }}" autofocus>
 
@@ -165,7 +165,9 @@
 @section('scripts')
     <script type="text/javascript">
         $(document).ready(function(){
-        $('.state').select2();
+            $('#state').select2({
+
+            });
         });
     </script>
 @endsection

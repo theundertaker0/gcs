@@ -29,3 +29,12 @@
 .logomediano{
     max-width: 300px;
 }
+
+.select2-container--default .select2-selection--single{
+    padding:6px;
+    height: 37px;
+    width: 175px;
+    font-size: 1.2em;
+    border: 1px solid #ced4da;
+    position: relative;
+}
