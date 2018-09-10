@@ -124,6 +124,7 @@
                             <option value="Veracruz">Veracruz</option>
                             <option value="Yucatán">Yucatán</option>
                             <option value="Zacatecas">Zacatecas</option>
+                            <option value="Otro">Otro</option>
                         </select>
                     </div>
 
