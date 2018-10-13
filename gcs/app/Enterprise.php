@@ -9,13 +9,14 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @mixin \Eloquent
  */
-class Enterprise extends Model
-{
-    function reviews(){
+class Enterprise extends Model {
+
+    function reviews() {
         return $this->hasMany(Review::class);
     }
 
-    function products(){
+    function products() {
         return $this->hasMany(Product::class);
     }
+
 }

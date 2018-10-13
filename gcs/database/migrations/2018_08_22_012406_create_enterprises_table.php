@@ -16,13 +16,9 @@ class CreateEnterprisesTable extends Migration
         Schema::create('enterprises', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name',100);
-            $table->string('street',150);
-            $table->string('borough',100);
-            $table->string('city',100);
-            $table->string('state',50);
-            $table->string('cp',10);
+            $table->unsignedInteger('score');
             $table->string('url',200);
-            $table->string('observation',45);
+            $table->string('observation',255);
             $table->timestamps();
         });
     }

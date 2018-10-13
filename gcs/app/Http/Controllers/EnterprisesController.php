@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Enterprise;
 use Illuminate\Http\Request;
 
 class EnterprisesController extends Controller {
@@ -12,7 +12,12 @@ class EnterprisesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function index() {
-        return view('enterprise.index'); //->with('user', $user);
+        //$user = Enterprise::find(\Auth::user()->id);
+        //$data = App\Enterprise::all();
+        $data= Enterprise::orderBy('id','DESC')->paginate();
+       // $enterprise = new \App\Enterprise;
+       // $data = $enterprise->get();
+        return view('enterprises.index', compact('data')); //->with('enterprises', $enterprises);
     }
 
     /**
@@ -20,8 +25,14 @@ class EnterprisesController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        return view('enterprise.create'); //->with('user', $user);
+    public function create(Request $request) {
+        $data = new \App\Enterprise;
+        $data->name = $request->post('inputName');
+        $data->url = $request->post('inputUrl');
+        $data->observation = $request->post('inputObservation');
+        $data->save();
+        return view('enterprises.index');
+        //return redirect()->back()->withSuccess('Registro Creado Exitosamente');
     }
 
     /**
@@ -31,7 +42,7 @@ class EnterprisesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
-        //
+        return view('enterprises.index');
     }
 
     /**

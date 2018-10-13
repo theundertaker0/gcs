@@ -18,7 +18,6 @@ class AdminUsersController extends Controller
 
     public function edit(){
         $user = User::find(\Auth::user()->id);
-
         return view('auth.edit')->with('user', $user);
     }
 
@@ -31,8 +30,6 @@ class AdminUsersController extends Controller
     }
 
     public function store(Request $request){
-
-
         $user = User::find(\Auth::user()->id);
         $user->name=$request->input('name');
         $user->last_name=$request->input('last_name');
@@ -55,7 +52,6 @@ class AdminUsersController extends Controller
 
     public function editPass(){
         $user = User::find(\Auth::user()->id);
-
         return view('auth.editpass')->with('user', $user);
     }
 

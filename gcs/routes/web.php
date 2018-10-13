@@ -29,5 +29,5 @@ Route::post('/updatepass','AdminUsersController@updatepass')->name('updatepass')
 
 
 ///////RUTAS  GENERADAS  PARA EL MODULO DE EMPERSAS/////
-Route::get('/enterprise', 'EnterprisesController@index')->name('enterprise');
-Route::get('createenterprise','EnterprisesController@create');
+Route::get('/enterprises', 'EnterprisesController@index')->name('enterprises');
+Route::post('/createenterprises', 'EnterprisesController@create')->name('createenterprises');

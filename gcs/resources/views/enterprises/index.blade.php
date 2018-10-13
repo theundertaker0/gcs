@@ -25,7 +25,7 @@
                 color: #566787;
                 background: #f5f5f5;
                 font-family: 'Varela Round', sans-serif;
-                font-size: 13px;
+                font-size: 16px;
             }
             .table-wrapper {
                 background: #fff;
@@ -52,7 +52,7 @@
             .table-title .btn {
                 color: #fff;
                 float: right;
-                font-size: 13px;
+                font-size: 15px;
                 border: none;
                 min-width: 50px;
                 border-radius: 2px;
@@ -87,7 +87,7 @@
                 background: #f5f5f5;
             }
             table.table th i {
-                font-size: 13px;
+                font-size: 19px;
                 margin: 0 5px;
                 cursor: pointer;
             }	
@@ -126,7 +126,7 @@
             }
             .pagination li a {
                 border: none;
-                font-size: 13px;
+                font-size: 19px;
                 min-width: 30px;
                 min-height: 30px;
                 color: #999;
@@ -155,7 +155,7 @@
             .hint-text {
                 float: left;
                 margin-top: 10px;
-                font-size: 13px;
+                font-size: 16px;
             }    
             /* Custom checkbox */
             .custom-checkbox {
@@ -239,7 +239,32 @@
             }	
             .modal form label {
                 font-weight: normal;
-            }	
+            }
+            /*  Calificacion de estrellas  */
+
+            input[type="radio"] {
+                display: none;
+            }
+
+            label {
+                color: grey;
+            }
+
+            .clasificacion {
+                direction: rtl;
+                unicode-bidi: bidi-override;
+            }
+
+            label:hover,
+            label:hover ~ label {
+                color: orange;
+            }
+
+            input[type="radio"]:checked ~ label {
+                color: orange;
+            }
+
+
         </style>
         <script type="text/javascript">
             $(document).ready(function () {
@@ -311,46 +336,34 @@
                             </div>
                             <div class="col-sm-6">
                                 <a href="#addEmployeeModal" class="btn btn-success" data-toggle="modal"><i class="material-icons">&#xE147;</i> <span>Agregar nueva Empresa</span></a>
-                                <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Eliminar Empresas</span></a>						
+                             <!--   <a href="#deleteEmployeeModal" class="btn btn-danger" data-toggle="modal"><i class="material-icons">&#xE15C;</i> <span>Eliminar Empresas</span></a>-->
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
-                                </th>
                                 <th></th>
                                 <th>Nombre</th>
-                                <th>Ciudad</th>
-                                <th>Estado</th>
-                                <th>url</th>
-                                <th>Actions</th>
+                                <th>Dirección Web</th>
+                                <th>Calificación</th>
+                                <th>Acciones</th>
                             </tr>
                         </thead>
 
                         <tbody>
-                            <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox1" name="options[]" value="1">
-                                        <label for="checkbox1"></label>
-                                    </span>
-                                </td>
-                                <td>Liverpool</td>
-                                <td>c. 60 prol. Mont. Norte, Mérida</td>
-                                <td>Yucatán</td>
-                                <td>http://www.liverpool.com</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
+                            <!--  CODIGO PARA CALIFICAR CON ESTRELLAS
+                            <td><form>
+                                    <p class="clasificacion">
+                                        <input id="radio1" type="radio" name="estrellas" value="5"><label for="radio1">★</label>
+                                        <input id="radio2" type="radio" name="estrellas" value="4"><label for="radio2">★</label>
+                                        <input id="radio3" type="radio" name="estrellas" value="3"><label for="radio3">★</label>
+                                        <input id="radio4" type="radio" name="estrellas" value="2"><label for="radio4">★</label>
+                                        <input id="radio5" type="radio" name="estrellas" value="1"><label for="radio5">★</label>
+                                    </p>
+                                </form></td>-->
+
+                            @foreach($data as $row)
                             <tr>
                                 <td>
                                     <span class="custom-checkbox">
@@ -358,65 +371,25 @@
                                         <label for="checkbox2"></label>
                                     </span>
                                 </td>
-                                <td>Chedarui</td>
-                                <td>c. 60 x 29. col. Chuburna, Mérida</td>
-                                <td>Yucatán</td>
-                                <td>http://www.chedrauimexico.com</td>
+                                <td>{{$row->name}}</td>
+                                <td>{{$row->url}}</td>
+                                <td><form>
+                                        <p class="clasificacion">
+                                            <?php for ($i = 0; $i < $row->score; $i++) { ?>
+                                             <label for="radio1">★</label>
+                                            <?php } ?>
+                                        </p>
+                                    </form>
+                                </td>
                                 <td>
                                     <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
-                         <!--   <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox3" name="options[]" value="1">
-                                        <label for="checkbox3"></label>
-                                    </span>
-                                </td>
-                                <td>Maria Anders</td>
-                                <td>mariaanders@mail.com</td>
-                                <td>25, rue Lauriston, Paris, France</td>
-                                <td>(503) 555-9931</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox4" name="options[]" value="1">
-                                        <label for="checkbox4"></label>
-                                    </span>
-                                </td>
-                                <td>Fran Wilson</td>
-                                <td>franwilson@mail.com</td>
-                                <td>C/ Araquil, 67, Madrid, Spain</td>
-                                <td>(204) 619-5731</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr>					
-                            <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox5" name="options[]" value="1">
-                                        <label for="checkbox5"></label>
-                                    </span>
-                                </td>
-                                <td>Martin Blank</td>
-                                <td>martinblank@mail.com</td>
-                                <td>Via Monte Bianco 34, Turin, Italy</td>
-                                <td>(480) 631-2097</td>
-                                <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
-                                </td>
-                            </tr> -->
+                            @endforeach
                         </tbody>
                     </table>
+                    {!! $data->render() !!}
                 </div>
                 <script>
                     $(function () {
@@ -434,10 +407,6 @@
                         });
                     });
                 </script>
-
-
-
-
 
 <!--<table class="table table-striped table-hover">
     <thead>
@@ -475,53 +444,31 @@
         <div id="addEmployeeModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form method="POST" action="{{URL::to('createenterprises')}}" aria-label="{{ __('Enterprises') }}"  enctype="multipart/form-data">
+                        @csrf
                         <div class="modal-header">						
                             <h4 class="modal-title">Agregar Empresa</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
                         </div>
-                        <div class="modal-body">					
+                        <div class="modal-body">
                             <div class="form-group">
-                                <label>Empresa</label>
-                                <input type="text" class="form-control" name="empresaInput" id="empresaInput" required>
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="inputName" id="inputName" required>
                             </div>
                             <div class="form-group">
-                                <label>Dirección:</label>
-                                <input class="form-control" name="calleInput" id="calleInput" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Municipio:</label>
-                                <input class="form-control" name="municipioInput" id="municipioInput" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Ciudad:</label>
-                                <input class="form-control" name="ciudadInout" id="ciudadInput" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Estado:</label>
-                                <input class="form-control" name="estadoInput" id="estadoInput" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Código Postal:</label>
-                                <input class="form-control" name="codigoPostalInput" id="emoresaInput" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>url:</label>
-                                <input class="form-control" name="urlInput" id="urlInpul"  required/>
+                                <label>Dirección Web:</label>
+                                <input class="form-control" name="inputUrl" id="inputUrl"  required/>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" required> </textarea>
-                            </div>
-                            <!-- <div class="form-group">
-                                 <label>Telefono</label>
-                                 <input type="text" class="form-control" required>
-                             </div>	-->				
+                                <textarea class="form-control" name="inputObservation" id="inputObservation" maxlength="240" required> </textarea>
+                            </div>				
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-success" value="Agregar">
                         </div>
+
                     </form>
                 </div>
             </div>
@@ -537,41 +484,17 @@
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
-                                <label>Empresa</label>
-                                <input type="text" class="form-control" name="empresaInputEdit" id="empresaInputEdit" required>
+                                <label>Nombre</label>
+                                <input type="text" class="form-control" name="inputName" id="inputName" required>
                             </div>
                             <div class="form-group">
-                                <label>Dirección:</label>
-                                <input class="form-control" name="calleInputEdit" id="calleInputEdit" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Municipio:</label>
-                                <input class="form-control" name="municipioInputEdit" id="municipioInputEdit" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Ciudad:</label>
-                                <input class="form-control" name="ciudadInoutEdit" id="ciudadInputEdit" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Estado:</label>
-                                <input class="form-control" name="estadoInputEdit" id="estadoInputEdit" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>Código Postal:</label>
-                                <input class="form-control" name="codigoPostalInputEdit" id="codigoPostalInputEdit" required/>
-                            </div>
-                            <div class="form-group">
-                                <label>url:</label>
-                                <input class="form-control" name="urlInputEdit" id="urlInputEdit"  required/>
+                                <label>Dirección Web:</label>
+                                <input class="form-control" name="inputUrl" id="inputUrl"  required/>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" required> </textarea>
-                            </div>
-                            <!-- <div class="form-group">
-                                 <label>Telefono</label>
-                                 <input type="text" class="form-control" required>
-                             </div>	-->				
+                                <textarea class="form-control" name="inputObservation" id="inputObservation"  required> </textarea>
+                            </div>				
                         </div>
 
                         <div class="modal-footer">
@@ -593,7 +516,7 @@
                         </div>
                         <div class="modal-body">					
                             <p>Estás seguro de eliminar los registros?</p>
-                            <p class="text-warning"><small>Esta acción no se podrá deshacer.</small></p>
+                            <p>Esta acción no se podrá deshacer.</p>
                         </div>
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
