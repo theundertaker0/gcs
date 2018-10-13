@@ -309,7 +309,7 @@
                 <a href="/edituser" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-edit "></span>&nbsp;Editar Perfil</a>
                 <a href="" href="{{ route('logout') }}" class="btn btn-lg btn-block btn-warning btnPrincipal" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="fa fa-sign-out-alt "></span>&nbsp; Salir</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                    @csrf
+                    {{ csrf_field() }}
                 </form>
             </div>
             <h2>Productos</h2>
@@ -445,7 +445,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <form method="POST" action="{{URL::to('createenterprises')}}" aria-label="{{ __('Enterprises') }}"  enctype="multipart/form-data">
-                        @csrf
+                        {{ csrf_field() }}
                         <div class="modal-header">						
                             <h4 class="modal-title">Agregar Empresa</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>

@@ -14,7 +14,7 @@ class EnterprisesController extends Controller {
     public function index() {
         //$user = Enterprise::find(\Auth::user()->id);
         //$data = App\Enterprise::all();
-        $data= Enterprise::orderBy('id','DESC')->paginate();
+        $data= Enterprise::orderBy('id','DESC')->paginate(10);
        // $enterprise = new \App\Enterprise;
        // $data = $enterprise->get();
         return view('enterprises.index', compact('data')); //->with('enterprises', $enterprises);
@@ -31,8 +31,8 @@ class EnterprisesController extends Controller {
         $data->url = $request->post('inputUrl');
         $data->observation = $request->post('inputObservation');
         $data->save();
-        return view('enterprises.index');
-        //return redirect()->back()->withSuccess('Registro Creado Exitosamente');
+        //return view('enterprises.index');
+        return redirect()->back()->withSuccess('Registro Creado Exitosamente');
     }
 
     /**

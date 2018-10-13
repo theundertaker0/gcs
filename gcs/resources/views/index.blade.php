@@ -28,6 +28,11 @@
         <div class="row margenInferior">
             <a href="" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Mis Garantías</a>
         </div>
+        <h2>Empresas</h2>
+        <hr />
+        <div class="row margenInferior">
+            <a href="{{route('enterprises')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Empresarios</a>
+        </div>
     </div>
     <div class="col-12 col-md-8 text-center paddingSuperiorGrande">
         <h1 class="primaryColor margenInferior">Garantía Completa y Segura</h1>

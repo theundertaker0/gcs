@@ -15,40 +15,40 @@
 
             <div class="form-group row">
                 <label for="email">{{ __('Correo electrónico') }}</label>
-                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
 
-                    @if ($errors->has('email'))
-                        <span class="invalid-feedback" role="alert">
+                @if ($errors->has('email'))
+                <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('email') }}</strong>
                 </span>
-                    @endif
-                </div>
+                @endif
+            </div>
 
             <div class="form-group row">
                 <label for="password">{{ __('Contraseña') }}</label>
-                    <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
 
-                    @if ($errors->has('password'))
-                        <span class="invalid-feedback" role="alert">
+                @if ($errors->has('password'))
+                <span class="invalid-feedback" role="alert">
                     <strong>{{ $errors->first('password') }}</strong>
                 </span>
-                    @endif
-                </div>
+                @endif
+            </div>
 
             <div class="form-group row">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}/>
 
-                        <label class="form-check-label" for="remember">
-                            {{ __('Recordar contraseña') }}
-                        </label>
-                    </div>
+                           <label class="form-check-label" for="remember">
+                        {{ __('Recordar contraseña') }}
+                    </label>
+                </div>
             </div>
 
             <div class="form-group row text-center">
                 <div class="col-12">
                     <button type="submit" class="btn btn-warning btnPrincipal">
-                       <span class="fa fa-sign-in-alt"></span> {{ __('Iniciar Sesión') }}
+                        <span class="fa fa-sign-in-alt"></span> {{ __('Iniciar Sesión') }}
                     </button>
                 </div>
                 <div class="col-12">
@@ -58,7 +58,7 @@
                 </div>
                 <div class="col-12">
                     <a class="btn btn-link" href="{{ route('register') }}">
-                    {{ __('Crear una cuenta') }}
+                        {{ __('Crear una cuenta') }}
                     </a>
                 </div>
             </div>
