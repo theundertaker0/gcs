@@ -1,3 +1,12 @@
+<?php
+/*
+ * Author: Melquizedec Moo Medina
+ * Date:  October, 2018
+ * Interfaz:  enterprise.index.php
+ * Description: Vista CRUD que permite agregar, modificar y eliminar datos de las empresas.
+ * utilizando formularios modales.
+ */
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -11,22 +20,18 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-
-
-        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">  
-        <link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>  
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-
         <style type="text/css">
             body {
                 color: #566787;
                 background: #f5f5f5;
                 font-family: 'Varela Round', sans-serif;
-                font-size: 16px;
+                font-size: 20px;
             }
+
+            .btn{
+                font-size: 15px;    
+            }
+
             .table-wrapper {
                 background: #fff;
                 padding: 20px 25px;
@@ -44,7 +49,7 @@
             }
             .table-title h2 {
                 margin: 5px 0 0;
-                font-size: 24px;
+                font-size: 25px;
             }
             .table-title .btn-group {
                 float: right;
@@ -58,11 +63,11 @@
                 border-radius: 2px;
                 border: none;
                 outline: none !important;
-                margin-left: 10px;
+                margin-left: 5px;
             }
             .table-title .btn i {
                 float: left;
-                font-size: 21px;
+                font-size: 25px;
                 margin-right: 5px;
             }
             .table-title .btn span {
@@ -71,7 +76,7 @@
             }
             table.table tr th, table.table tr td {
                 border-color: #e9e9e9;
-                padding: 12px 15px;
+                padding: 5px 5px;
                 vertical-align: middle;
             }
             table.table tr th:first-child {
@@ -90,11 +95,39 @@
                 font-size: 19px;
                 margin: 0 5px;
                 cursor: pointer;
-            }	
+
+            }
+            /*estilo para la celda */
+            th {
+                font-size: 15px;
+            }
+            td {
+                font-size: 13px;
+            }
+            input[type=button]{
+                font-size:15px;
+            }
+            input[type=submit   ]{
+                font-size:15px;
+            }
+
+            input[type=text], select {
+                width: 100%;
+                padding: 12px 20px;
+                font-size:15px;
+                margin: 8px 0;
+                display: inline-block;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                box-sizing: border-box;
+            }
+
+
             table.table td:last-child i {
                 opacity: 0.9;
-                font-size: 22px;
-                margin: 0 5px;
+                font-weight: bold;
+                margin: 5px 0 0;
+                font-size: 25px;
             }
             table.table td a {
                 font-weight: bold;
@@ -112,8 +145,14 @@
             table.table td a.delete {
                 color: #F44336;
             }
+
+            i {
+                font-size: 15px;    
+            }
+
             table.table td i {
-                font-size: 19px;
+                font-size: 15px;
+                font-weight: bold;
             }
             table.table .avatar {
                 border-radius: 50%;
@@ -126,7 +165,7 @@
             }
             .pagination li a {
                 border: none;
-                font-size: 19px;
+                font-size: 15px;
                 min-width: 30px;
                 min-height: 30px;
                 color: #999;
@@ -240,6 +279,7 @@
             .modal form label {
                 font-weight: normal;
             }
+
             /*  Calificacion de estrellas  */
 
             input[type="radio"] {
@@ -247,7 +287,8 @@
             }
 
             label {
-                color: grey;
+                color: orange;
+                font-size: 15px;
             }
 
             .clasificacion {
@@ -263,14 +304,11 @@
             input[type="radio"]:checked ~ label {
                 color: orange;
             }
-
-
         </style>
         <script type="text/javascript">
             $(document).ready(function () {
                 // Activate tooltip
                 $('[data-toggle="tooltip"]').tooltip();
-
                 // Select/Deselect checkboxes
                 var checkbox = $('table tbody input[type="checkbox"]');
                 $("#selectAll").click(function () {
@@ -289,6 +327,51 @@
                         $("#selectAll").prop("checked", false);
                     }
                 });
+
+                ///////MODAL  EDIT ////////
+                // on modal show
+                $(document).on("click", ".edit", function () {
+                    var tr = $(this).parents("tr").html();
+                    var name=$(this).parents("tr").find("td:first-child").html();
+                    var url=$(this).parents("tr").find("td:eq(1)").html();
+                    var observation=$(this).parents("tr").find("td:eq(1)").html();
+                    //var td=tr.find("td:only-child").html();
+                    document.getElementById("inputNameEdit").value = td;
+                    document.getElementById("inputUrlEdit").value = td2;
+                    document.getElementById("inputObservationEdit").value = "hola";
+
+//                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
+//                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
+//                    });
+//                    $(this).parents("tr").find(".add, .edit").toggle();
+//                    $(".add-new").attr("disabled", "disabled");
+                });
+
+
+                $('#editEnterpriseModal').on('show.bs.modal', function () {
+//                    
+//                    var el = $(".edit-item-trigger-clicked"); // See how its usefull right here? 
+//                   // var row = el.closest(".data-row");
+//                   alert("hola");
+//                    // get the data
+//                   // var id = el.data('item-id');
+//                   // var name = row.children(".name").text();
+//                   // var description = row.children(".description").text();
+//                    // fill the data in the input fields
+//                    $("#modal-input-id").val(id);
+//                    $("#modal-input-name").val(name);
+//                    $("#modal-input-description").val(description);
+
+                    //  document.getElementById("inputNameEdit").value = "hola";
+                });
+
+                // on modal hide
+                $('#edit-modal').on('hide.bs.modal', function () {
+                    $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
+                    $("#edit-form").trigger("reset");
+                });
+
+
             });
         </script>
     </head>
@@ -307,7 +390,8 @@
             <img src="{{ asset('uploads/avatars/'.Auth::user()->avatar) }}" alt="Avatar" class="avatar margenInferior">
             <div class="row margenInferior">
                 <a href="/edituser" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-edit "></span>&nbsp;Editar Perfil</a>
-                <a href="" href="{{ route('logout') }}" class="btn btn-lg btn-block btn-warning btnPrincipal" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><span class="fa fa-sign-out-alt "></span>&nbsp; Salir</a>
+                <a href="" href="{{ route('logout') }}" class="btn btn-lg btn-block btn-warning btnPrincipal" onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();"><span class="fa fa-sign-out-alt "></span>&nbsp; Salir</a>
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                     {{ csrf_field() }}
                 </form>
@@ -343,7 +427,6 @@
                     <table class="table table-bordered" id="table">
                         <thead>
                             <tr>
-                                <th></th>
                                 <th>Nombre</th>
                                 <th>Dirección Web</th>
                                 <th>Calificación</th>
@@ -365,24 +448,20 @@
 
                             @foreach($data as $row)
                             <tr>
-                                <td>
-                                    <span class="custom-checkbox">
-                                        <input type="checkbox" id="checkbox2" name="options[]" value="1">
-                                        <label for="checkbox2"></label>
-                                    </span>
-                                </td>
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->url}}</td>
                                 <td><form>
                                         <p class="clasificacion">
                                             <?php for ($i = 0; $i < $row->score; $i++) { ?>
-                                             <label for="radio1">★</label>
-                                            <?php } ?>
+                                                <label for="radio1">★</label>
+<?php } ?>
                                         </p>
                                     </form>
                                 </td>
                                 <td>
-                                    <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></a>
+                                    <a href="#editEnterpriseModal" class="edit" data-toggle="modal">
+                                        <i class="material-icons" id="edit-item" data-toggle="tooltip" data-name="{{$row->name}}" data-description="{{$row->description}}" data-url="{{$row->url}}" title="Edit">&#xE254;</i>
+                                    </a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
                             </tr>
@@ -394,50 +473,9 @@
                 <script>
                     $(function () {
                         $('#table').DataTable({
-                            //   processing: true,
-                            //   serverSide: true,
-                            // ajax: '{{ url('index') }}',
-                            //  columns: [
-                            //      {data: 'name', name: 'nombre'},
-                            //      {data: 'city', name: 'ciudad'},
-                            //      {data: 'borough', name: 'municipio'},
-                            //      {data: 'url', name: 'url'},
-                            //      {data: '', name: 'acciones'}
-                            //  ]
                         });
                     });
                 </script>
-
-<!--<table class="table table-striped table-hover">
-    <thead>
-        <tr>
-            <th>
-                <span class="custom-checkbox">
-                    <input type="checkbox" id="selectAll">
-                    <label for="selectAll"></label>
-                </span>
-            </th>
-            <th>Nombre</th>
-            <th>Ciudad</th>
-            <th>Municipio</th>
-            <th>url</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    
-</table>
-<div class="clearfix">
-    <div class="hint-text">Mostrando <b>5</b> de <b>25</b> registros</div>
-    <ul class="pagination">
-        <li class="page-item disabled"><a href="#">Previous</a></li>
-        <li class="page-item"><a href="#" class="page-link">1</a></li>
-        <li class="page-item"><a href="#" class="page-link">2</a></li>
-        <li class="page-item active"><a href="#" class="page-link">3</a></li>
-        <li class="page-item"><a href="#" class="page-link">4</a></li>
-        <li class="page-item"><a href="#" class="page-link">5</a></li>
-        <li class="page-item"><a href="#" class="page-link">Next</a></li>
-    </ul>
-</div-->
             </div>
         </div>
         <!-- Edit Modal HTML -->
@@ -474,10 +512,10 @@
             </div>
         </div>
         <!-- Edit Modal HTML -->
-        <div id="editEmployeeModal" class="modal fade">
+        <div id="editEnterpriseModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form method="POST" action="{{URL::to('editenterprises')}}" aria-label="{{ __('Enterprises') }}"  enctype="multipart/form-data">
                         <div class="modal-header">						
                             <h4 class="modal-title">Modificar Empresa</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -485,15 +523,15 @@
                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="inputName" id="inputName" required>
+                                <input type="text" class="form-control" name="inputName" id="inputNameEdit" required>
                             </div>
                             <div class="form-group">
                                 <label>Dirección Web:</label>
-                                <input class="form-control" name="inputUrl" id="inputUrl"  required/>
+                                <input class="form-control" name="inputUrl" id="inputUrlEdit"  required/>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" name="inputObservation" id="inputObservation"  required> </textarea>
+                                <textarea class="form-control" name="inputObservationEdit" id="inputObservationEdit"  required> </textarea>
                             </div>				
                         </div>
 

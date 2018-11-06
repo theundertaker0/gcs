@@ -1,5 +1,15 @@
 <?php
-
+/*
+ * Author: Melquizedec Moo Medina
+ * Date:  October, 2018
+ * Source:  EnterprisesController
+ * Description: Controlador de todos los accesos a los módulos que provienen de la tabla de empresas.
+ * 
+ * create:      Crear Empresa
+ * destroy:     Eliminar un registro de la tabla enterprises.
+ * update:      Actualizar los datos de las empresas.
+ * 
+ */
 namespace App\Http\Controllers;
 use App\Enterprise;
 use Illuminate\Http\Request;
@@ -14,7 +24,7 @@ class EnterprisesController extends Controller {
     public function index() {
         //$user = Enterprise::find(\Auth::user()->id);
         //$data = App\Enterprise::all();
-        $data= Enterprise::orderBy('id','DESC')->paginate(10);
+        $data = Enterprise::orderBy('id','DESC')->paginate(10);
        // $enterprise = new \App\Enterprise;
        // $data = $enterprise->get();
         return view('enterprises.index', compact('data')); //->with('enterprises', $enterprises);
@@ -62,7 +72,13 @@ class EnterprisesController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function edit($id) {
-        //
+        $data = new \App\Enterprise;
+        $data->name = $request->post('inputName');
+        $data->url = $request->post('inputUrl');
+        $data->observation = $request->post('inputObservation');
+        $data->update($id);
+        //return view('enterprises.index');
+        return redirect()->back()->withSuccess('Registro Creado Exitosamente');   
     }
 
     /**
