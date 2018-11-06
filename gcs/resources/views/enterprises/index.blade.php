@@ -107,19 +107,25 @@
             input[type=button]{
                 font-size:15px;
             }
-            input[type=submit   ]{
+            input[type=submit]{
                 font-size:15px;
             }
 
             input[type=text], select {
                 width: 100%;
                 padding: 12px 20px;
-                font-size:15px;
+                font-size:17px;
                 margin: 8px 0;
                 display: inline-block;
                 border: 1px solid #ccc;
                 border-radius: 4px;
                 box-sizing: border-box;
+            }
+
+            textarea {
+                font-size:17px;
+                margin: 8px 0;
+                display: inline-block;        
             }
 
 
@@ -268,9 +274,11 @@
                 border-radius: 2px;
                 box-shadow: none;
                 border-color: #dddddd;
+
             }
             .modal textarea.form-control {
                 resize: vertical;
+                font-size: 15px;
             }
             .modal .btn {
                 border-radius: 2px;
@@ -332,46 +340,14 @@
                 // on modal show
                 $(document).on("click", ".edit", function () {
                     var tr = $(this).parents("tr").html();
-                    var name=$(this).parents("tr").find("td:first-child").html();
-                    var url=$(this).parents("tr").find("td:eq(1)").html();
-                    var observation=$(this).parents("tr").find("td:eq(1)").html();
+                    var name = $(this).parents("tr").find("td:first-child").html();
+                    var url = $(this).parents("tr").find("td:eq(1)").html();
+                    var observation = $(this).parents("tr").find("td:eq(4)").html();
                     //var td=tr.find("td:only-child").html();
-                    document.getElementById("inputNameEdit").value = td;
-                    document.getElementById("inputUrlEdit").value = td2;
-                    document.getElementById("inputObservationEdit").value = "hola";
-
-//                    $(this).parents("tr").find("td:not(:last-child)").each(function () {
-//                        $(this).html('<input type="text" class="form-control" value="' + $(this).text() + '">');
-//                    });
-//                    $(this).parents("tr").find(".add, .edit").toggle();
-//                    $(".add-new").attr("disabled", "disabled");
+                    document.getElementById("inputNameEdit").value = name;
+                    document.getElementById("inputUrlEdit").value = url;
+                    document.getElementById("inputObservationEdit").value = observation;
                 });
-
-
-                $('#editEnterpriseModal').on('show.bs.modal', function () {
-//                    
-//                    var el = $(".edit-item-trigger-clicked"); // See how its usefull right here? 
-//                   // var row = el.closest(".data-row");
-//                   alert("hola");
-//                    // get the data
-//                   // var id = el.data('item-id');
-//                   // var name = row.children(".name").text();
-//                   // var description = row.children(".description").text();
-//                    // fill the data in the input fields
-//                    $("#modal-input-id").val(id);
-//                    $("#modal-input-name").val(name);
-//                    $("#modal-input-description").val(description);
-
-                    //  document.getElementById("inputNameEdit").value = "hola";
-                });
-
-                // on modal hide
-                $('#edit-modal').on('hide.bs.modal', function () {
-                    $('.edit-item-trigger-clicked').removeClass('edit-item-trigger-clicked')
-                    $("#edit-form").trigger("reset");
-                });
-
-
             });
         </script>
     </head>
@@ -454,7 +430,7 @@
                                         <p class="clasificacion">
                                             <?php for ($i = 0; $i < $row->score; $i++) { ?>
                                                 <label for="radio1">★</label>
-<?php } ?>
+                                            <?php } ?>
                                         </p>
                                     </form>
                                 </td>
@@ -464,6 +440,7 @@
                                     </a>
                                     <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
+                                <td style="display:none"> {{$row->observation}} </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -527,11 +504,11 @@
                             </div>
                             <div class="form-group">
                                 <label>Dirección Web:</label>
-                                <input class="form-control" name="inputUrl" id="inputUrlEdit"  required/>
+                                <input type="text" class="form-control" name="inputUrl" id="inputUrlEdit"  required/>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" name="inputObservationEdit" id="inputObservationEdit"  required> </textarea>
+                                <textarea    class="form-control" name="inputObservationEdit" id="inputObservationEdit"  required> </textarea>
                             </div>				
                         </div>
 

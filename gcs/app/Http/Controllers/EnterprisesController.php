@@ -73,9 +73,9 @@ class EnterprisesController extends Controller {
      */
     public function edit($id) {
         $data = new \App\Enterprise;
-        $data->name = $request->post('inputName');
-        $data->url = $request->post('inputUrl');
-        $data->observation = $request->post('inputObservation');
+        $data->name = $request->post('inputNameEdit');
+        $data->url = $request->post('inputUrlEdit');
+        $data->observation = $request->post('inputObservationEdit');
         $data->update($id);
         //return view('enterprises.index');
         return redirect()->back()->withSuccess('Registro Creado Exitosamente');   
