@@ -26,6 +26,8 @@ Route::post('/storeuser','AdminUsersController@store')->name('storeuser');
 Route::get('/changepass','AdminUsersController@editpass')->name('changepass');
 Route::post('/updatepass','AdminUsersController@updatepass')->name('updatepass');
 
+///////Rutas para módulo de Facturas///////
+Route::resource('bill','BillController');
 
 ///////RUTAS  GENERADAS  PARA EL MODULO DE EMPRESAS/////
 Route::get('/enterprises', 'EnterprisesController@index')->name('enterprises');
