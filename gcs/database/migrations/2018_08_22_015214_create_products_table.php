@@ -24,7 +24,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('brands_id');
             $table->foreign('brands_id')->references('id')->on('brands');
             $table->unsignedInteger('bills_id');
-            $table->foreign('bills_id')->references('id')->on('bills');
+            $table->foreign('bills_id')->references('id')->on('bill');
             $table->unsignedInteger('enterprises_id');
             $table->foreign('enterprises_id')->references('id')->on('enterprises');
             $table->timestamps();

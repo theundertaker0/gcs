@@ -74,9 +74,17 @@
       <path value="$PROJECT_DIR$/gcs/vendor/sebastian/exporter" />
       <path value="$PROJECT_DIR$/gcs/vendor/sebastian/recursion-context" />
       <path value="$PROJECT_DIR$/gcs/vendor/sebastian/object-enumerator" />
-      <path value="$PROJECT_DIR$/gcs/vendor/symfony/class-loader" />
       <path value="$PROJECT_DIR$/gcs/vendor/barryvdh/reflection-docblock" />
       <path value="$PROJECT_DIR$/gcs/vendor/barryvdh/laravel-ide-helper" />
+      <path value="$PROJECT_DIR$/gcs/vendor/yajra/laravel-datatables-oracle" />
+      <path value="$PROJECT_DIR$/gcs/vendor/seld/phar-utils" />
+      <path value="$PROJECT_DIR$/gcs/vendor/seld/jsonlint" />
+      <path value="$PROJECT_DIR$/gcs/vendor/justinrainbow/json-schema" />
+      <path value="$PROJECT_DIR$/gcs/vendor/symfony/filesystem" />
+      <path value="$PROJECT_DIR$/gcs/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/gcs/vendor/guzzlehttp/psr7" />
+      <path value="$PROJECT_DIR$/gcs/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/gcs/vendor/davejamesmiller/laravel-breadcrumbs" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="7.1" />

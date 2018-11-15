@@ -164,6 +164,8 @@
 
 @section('scripts')
     <script type="text/javascript">
+        $.fn.select2.defaults.set('language', 'es');
+        $.fn.select2.defaults.set('theme', 'bootstrap');
         $(document).ready(function(){
             $('#state').select2({
 

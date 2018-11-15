@@ -28,7 +28,7 @@ class CreateUsersTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('bills',function(Blueprint $table){
+        Schema::create('bill',function(Blueprint $table){
             $table->increments('id');
             $table->string('folio',50);
             $table->date('date');
@@ -49,7 +49,7 @@ class CreateUsersTable extends Migration
     public function down()
     {
         Schema::dropIfExists('users');
-        Schema::dropIfExists('bills');
+        Schema::dropIfExists('bill');
         Schema::dropIfExists('brands');
     }
 }

@@ -8,6 +8,7 @@
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/barryvdh/reflection-docblock" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/caouecs/laravel-lang" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/composer" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/davejamesmiller/laravel-breadcrumbs" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/dnoegel/php-xdg-base-dir" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/doctrine/inflector" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/doctrine/instantiator" />
@@ -18,9 +19,12 @@
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/fideloper/proxy" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/filp/whoops" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/fzaninotto/faker" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/guzzlehttp/psr7" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/hamcrest/hamcrest-php" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/intervention/image" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/jakub-onderka/php-console-color" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/jakub-onderka/php-console-highlighter" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/justinrainbow/json-schema" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/laravel/framework" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/laravel/tinker" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/league/flysystem" />
@@ -44,6 +48,7 @@
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/phpunit/php-token-stream" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/phpunit/phpunit" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/psr/container" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/psr/http-message" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/psr/log" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/psr/simple-cache" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/psy/psysh" />
@@ -59,12 +64,14 @@
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/sebastian/recursion-context" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/sebastian/resource-operations" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/sebastian/version" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/seld/jsonlint" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/seld/phar-utils" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/swiftmailer/swiftmailer" />
-      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/class-loader" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/console" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/css-selector" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/debug" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/event-dispatcher" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/filesystem" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/finder" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/http-foundation" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/symfony/http-kernel" />
@@ -79,6 +86,7 @@
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/tijsverkoyen/css-to-inline-styles" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/vlucas/phpdotenv" />
       <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/webmozart/assert" />
+      <excludeFolder url="file://$MODULE_DIR$/gcs/vendor/yajra/laravel-datatables-oracle" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
