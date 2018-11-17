@@ -35,15 +35,15 @@
                </select>
             </div>
             <div class="form-group">
-                <label for="marca">Marca:</label>
-                <select name="marca" id="marca" class="form-control" style="width: 100%;">
-
-                </select>
+                <label for="empresa">Empresa:</label>
+                <input type="text" class="form-control" name="empresa" required>
             </div>
             <div class="form-group">
-                <label for="empresa">Empresa:</label>
-                <select name="empresa" id="empresa" class="form-control" style="width: 100%;">
-
+                <label for="marca">Marca:</label>
+                <select name="marca" id="marca" class="form-control" style="width: 100%;">
+                    @foreach($brands as $brand)
+                        <option value="{{$brand->id}}">{{$brand->name}}</option>
+                    @endforeach
                 </select>
             </div>
             <div class="form-group">

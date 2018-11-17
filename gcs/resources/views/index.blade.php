@@ -21,7 +21,7 @@
         <hr />
         <div class="row margenInferior">
             <a href="" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-plus-square "></span>&nbsp;Nuevo Producto</a>
-            <a href="" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Mis Productos</a>
+            <a href="{{route('product.index')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Mis Productos</a>
         </div>
         <h2>Garantías</h2>
         <hr />

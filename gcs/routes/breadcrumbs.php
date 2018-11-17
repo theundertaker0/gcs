@@ -43,6 +43,18 @@ Breadcrumbs::for('newProduct', function ($trail) {
 });
 
 
+// Home > Product > [Show Product]
+Breadcrumbs::for('showProduct', function ($trail,$product) {
+    $trail->parent('product');
+    $trail->push($product->serial_number, route('product.index',$product->id));
+});
+
+// Home > Product > [Edit Product]
+Breadcrumbs::for('editProduct', function ($trail, $product) {
+    $trail->parent('product');
+    $trail->push($product->serial_number, route('product.edit', $product->id));
+});
+
 // Home > Blog > [Category] > [Post]
 Breadcrumbs::for('post', function ($trail, $post) {
 $trail->parent('category', $post->category);
