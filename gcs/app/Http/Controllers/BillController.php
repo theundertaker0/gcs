@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Product;
 use Illuminate\Http\Request;
 use App\Bill;
 use DataTables;
+use App\Enterprise;
 use App\User;
 
 class BillController extends Controller
@@ -143,4 +145,26 @@ class BillController extends Controller
         $bill->delete();
         return redirect('bill')->with('success','La factura ha sido eliminada');
     }
+
+
+    public function billproducts($id)
+    {
+        return view('bill.showproducts',['id'=>$id]);
+    }
+
+    public function productsbybill($id)
+    {
+        $products=Product::where('bills_id',$id);
+        return Datatables::of($products)
+
+            ->make(true);
+    }
+
+    public function addproduct($id)
+    {
+        $bill=Bill::find($id);
+        $brands=Enterprise::all();
+        return view('bill.addproduct',['bill'=>$bill,'brands'=>$brands]);
+    }
+
 }

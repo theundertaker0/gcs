@@ -22,6 +22,13 @@
                 </div>
                 <div class="card-body">
                     <h5 class="card-title text-center">Vencimiento: {{$product->final_date}}</h5>
+                    @if((int)$faltante>15)
+                    <p class="alert-success text-center">Restante: {{$faltante}} días</p>
+                    @elseif((int)$faltante<7)
+                        <p class="alert-danger text-center">Restante: {{$faltante}} días</p>
+                        @else
+                        <p class="alert-warning text-center">Restante: {{$faltante}} días</p>
+                    @endif
                     <p class="card-text">Marca: {{$brand->name}}</p>
                     <p class="card-text">Empresa: {{$product->brand}}</p>
                     <p class="card-text">{{$product->description}}</p>

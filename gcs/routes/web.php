@@ -30,6 +30,9 @@ Route::post('/updatepass','AdminUsersController@updatepass')->name('updatepass')
 Route::resource('bill','BillController');
 Route::get('bill/misfacturas','BillController@getBills')->name('bill.misfacturas');
 route::get('facturas','BillController@facturas');
+Route::get('billproducts/{id}','BillController@billproducts')->name('bill.billproducts');
+Route::get(' productsbybill/{id}','BillController@productsbybill')->name('bill.productsbybill');
+Route::get(' addproduct/{id}','BillController@addproduct')->name('bill.addproduct');
 
 ///////RUTAS  GENERADAS  PARA EL MODULO DE EMPRESAS/////
 Route::get('/enterprises', 'EnterprisesController@index')->name('enterprises');

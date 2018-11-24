@@ -6,6 +6,21 @@ $trail->push('Inicio', url('/'));
 });
 
 
+
+//USUARIO
+
+// Index > [Edit User]
+Breadcrumbs::for('editUser', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Editar Perfil', url('edituser'));
+});
+
+// Index > [Edit User Pass]
+Breadcrumbs::for('editUserPass', function ($trail) {
+    $trail->parent('index');
+    $trail->push('Editar Contraseña', url('changepass'));
+});
+
 //FACTURAS
 
 // Index > Bills

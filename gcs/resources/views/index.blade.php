@@ -17,11 +17,11 @@
                 @csrf
             </form>
         </div>
-        <h2>Productos</h2>
+        <h2>Facturas y Productos</h2>
         <hr />
         <div class="row margenInferior">
-            <a href="" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-plus-square "></span>&nbsp;Nuevo Producto</a>
-            <a href="{{route('product.index')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Mis Productos</a>
+            <a href="{{route('bill.index')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fas fa-file-invoice-dollar"></span>&nbsp;Mis Facturas</a>
+            <a href="{{route('product.index')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fas fa-box"></span>&nbsp;Mis Productos</a>
         </div>
         <h2>Garantías</h2>
         <hr />

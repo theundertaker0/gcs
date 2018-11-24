@@ -32,6 +32,9 @@
                         <input type="date" class="form-control" name="fecha" value="{{$bill->date}}" required>
                     </div>
                     <div class="form-group">
+                        <div class="alert alert-secondary" role="alert">
+                            Solamente se aceptan documentos en formato PDF e imágenes en JPG y PNG que no excedan los 5 mb de tamaño.
+                        </div>
                         <label for="picture">Imagen/Documento:</label>
                         <input type="file" id="picture" name="picture" accept="application/pdf, image/*">
                     </div>

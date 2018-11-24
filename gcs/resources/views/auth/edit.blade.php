@@ -8,7 +8,17 @@
 
 
 @section('content')
-    <div class="row text-center margenInferior paddingSuperior">
+    <div class="row text-center">
+        <div class="col-12" style="padding-top: 2em;">
+            <h1 class="text-center">Editar Perfil</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ Breadcrumbs::render('editUser') }}
+        </div>
+    </div>
+    <div class="row text-center paddingSuperior">
         <div class="col-12">
             @if(session('success'))
             <p class="alert-success">{{session('success')}}<a href="{{url('/')}}" class="btn btn-link"> Regresar a página principal</a></p>

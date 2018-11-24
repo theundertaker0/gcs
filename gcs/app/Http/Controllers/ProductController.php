@@ -8,6 +8,7 @@ use App\Product;
 use App\Bill;
 use DataTables;
 use App\User;
+use Carbon\Carbon;
 
 
 class ProductController extends Controller
@@ -31,7 +32,7 @@ class ProductController extends Controller
 
     public function productos()
     {
-        $products = Product::where('users_id',\Auth::user()->id);
+        $products = Product::where('users_id',\Auth::user()->id)->get();
 
         return Datatables::of($products)
 
@@ -58,13 +59,15 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $fechainicio=Carbon::createFromFormat('Y-m-d',$request->get('fecha'));
+        $endDate=$fechainicio->addYears($request->get('anios'))->addMonths($request->get('meses'))->addDays($request->get('dias'));
         $user = User::find(\Auth::user()->id);
         $product= new Product();
         $product->serial_number=$request->get('serie');
         $product->bills_id=$request->get('factura');
         $product->brand=$request->get('empresa');
         $product->enterprises_id=$request->get('marca');
-        $product->final_date=$request->get('fecha');
+        $product->final_date=$endDate;
         $product->users_id=$user->id;
         $product->description=$request->get('descripcion');
         $product->status=1;
@@ -81,9 +84,13 @@ class ProductController extends Controller
     public function show($id)
     {
         $product=Product::find($id);
+        $actual=Carbon::now();
+        $actual=$actual->format('Y-m-d');
+        $final=Carbon::createFromFormat('Y-m-d',$product->final_date);
+        $duracion=$final->diffInDays($actual);
         $brand=Enterprise::find($product->enterprises_id);
         $bill=Bill::find($product->bills_id);
-        return view('product.view',['product'=>$product,'brand'=>$brand,'bill'=>$bill]);
+        return view('product.view',['product'=>$product,'brand'=>$brand,'bill'=>$bill,'faltante'=>$duracion]);
     }
 
     /**

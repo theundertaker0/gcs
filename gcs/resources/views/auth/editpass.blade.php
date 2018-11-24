@@ -8,6 +8,16 @@
 
 
 @section('content')
+    <div class="row text-center">
+        <div class="col-12" style="padding-top: 2em;">
+            <h1 class="text-center">Editar Contraseña</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12">
+            {{ Breadcrumbs::render('editUserPass') }}
+        </div>
+    </div>
     <div class="row text-center margenInferior paddingSuperior">
         <div class="col-12">
             @if(session('success'))
