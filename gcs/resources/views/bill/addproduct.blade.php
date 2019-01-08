@@ -46,16 +46,28 @@
                 </div>
                 <div class="form-group">
                     <label for="descripcion">Descripción:</label>
-                    <textarea name="descripcion" id="descripcion" rows="3" class="form-control"></textarea>
+                    <textarea name="descripcion" id="descripcion" rows="3" class="form-control" required></textarea>
                 </div>
                 <div class="form-group">
                     <label for="fecha">Fecha de inicio de garantía:</label>
                     <input type="date" class="form-control" name="fecha" required>
                 </div>
-                <div class="form-group">
-                    <label for="dias">Duración de la garantía (en días):</label>
-                    <input type="number" class="form-control" name="dias" min="0" max="3650" required>
+                <div class="row">
+                    <label for="dias" class="col-12">Duración de la garantía</label>
+                    <div class="form-group col-4">
+                        <label for="dias">Años:</label>
+                        <input type="number" class="form-control" name="anios" min="0" max="9" required value="0">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="dias">Meses:</label>
+                        <input type="number" class="form-control" name="meses" min="0" max="11" required value="0">
+                    </div>
+                    <div class="form-group col-4">
+                        <label for="dias">Días:</label>
+                        <input type="number" class="form-control" name="dias" min="0" max="364" required value="0">
+                    </div>
                 </div>
+
                 <div class="form-group text-center paddingSuperior">
                     <button type="submit" class="btn btn-warning btnPrincipal">Guardar</button>
                 </div>
