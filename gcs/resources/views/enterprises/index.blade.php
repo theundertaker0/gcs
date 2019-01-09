@@ -111,7 +111,7 @@
                 font-size:15px;
             }
 
-            input[type=text], select {
+            input[type=text], input[type=email], select, textarea{
                 width: 100%;
                 padding: 12px 20px;
                 font-size:17px;
@@ -127,7 +127,6 @@
                 margin: 8px 0;
                 display: inline-block;        
             }
-
 
             table.table td:last-child i {
                 opacity: 0.9;
@@ -339,16 +338,31 @@
                 ///////MODAL  EDIT ////////
                 // on modal show
                 $(document).on("click", ".edit", function () {
+
+
                     var tr = $(this).parents("tr").html();
                     var name = $(this).parents("tr").find("td:first-child").html();
                     var url = $(this).parents("tr").find("td:eq(1)").html();
-                    var observation = $(this).parents("tr").find("td:eq(4)").html();
-                    //var td=tr.find("td:only-child").html();
+                    var email = $(this).parents("tr").find("td:eq(4)").html();
+                    var observation = $(this).parents("tr").find("td:eq(5)").html();
+                    var id = $(this).parents("tr").find("td:eq(6)").html();
+
+                    document.getElementById("inputIdEdit").value = id;
                     document.getElementById("inputNameEdit").value = name;
                     document.getElementById("inputUrlEdit").value = url;
+                    document.getElementById("inputEmailEdit").value = email;
                     document.getElementById("inputObservationEdit").value = observation;
+
+                });
+                 $(document).on("click", ".delete", function () {
+             
+                    var id = $(this).parents("tr").find("td:eq(6)").html();
+
+                    document.getElementById("inputIdDelete").value = id;                    
+
                 });
             });
+
         </script>
     </head>
 
@@ -424,6 +438,7 @@
 
                             @foreach($data as $row)
                             <tr>
+
                                 <td>{{$row->name}}</td>
                                 <td>{{$row->url}}</td>
                                 <td><form>
@@ -436,11 +451,13 @@
                                 </td>
                                 <td>
                                     <a href="#editEnterpriseModal" class="edit" data-toggle="modal">
-                                        <i class="material-icons" id="edit-item" data-toggle="tooltip" data-name="{{$row->name}}" data-description="{{$row->description}}" data-url="{{$row->url}}" title="Edit">&#xE254;</i>
+                                        <i class="material-icons" id="edit-item" data-toggle="tooltip" title="Editar">&#xE254;</i>
                                     </a>
-                                    <a href="#deleteEmployeeModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
+                                    <a href="#deleteEnterpriseModal" class="delete" data-toggle="modal"><i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></a>
                                 </td>
+                                <td style="display:none"> {{$row->email}} </td>
                                 <td style="display:none"> {{$row->observation}} </td>
+                                <td style="display:none"> {{$row->id}} </td>
                             </tr>
                             @endforeach
                         </tbody>
@@ -468,15 +485,19 @@
                         <div class="modal-body">
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="inputName" id="inputName" required>
+                                <input type="text" class="form-control" name="inputName" id="inputName" placeholder="Marca" required="yes"/>
                             </div>
                             <div class="form-group">
                                 <label>Dirección Web:</label>
-                                <input class="form-control" name="inputUrl" id="inputUrl"  required/>
+                                <input type="text" class="form-control" name="inputUrl" id="inputUrl" placeholder="http://www.marca.com" required="yes"/>
+                            </div>
+                            <div class="form-group">
+                                <label>Correo Electronico:</label>
+                                <input type="email" class="form-control" name="inputEmail" id="inputEmail" placeholder="soporte@marca.com"  required="yes"/>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea class="form-control" name="inputObservation" id="inputObservation" maxlength="240" required> </textarea>
+                                <textarea class="form-control" name="inputObservation" id="inputObservation" maxlength="240"  required="yes"> </textarea>
                             </div>				
                         </div>
                         <div class="modal-footer">
@@ -489,42 +510,88 @@
             </div>
         </div>
         <!-- Edit Modal HTML -->
+
+
+        <!--
+                <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                                <h4 class="modal-title" id="myModalLabel">Tour</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form id="frmProducts" name="frmProducts" class="form-horizontal" novalidate="">
+                                    <div class="form-group error">
+                                        <label for="inputName" class="col-sm-3 control-label">Name</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control has-error" id="name" name="name" placeholder="Product Name" value="">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="inputDetail" class="col-sm-3 control-label">Details</label>
+                                        <div class="col-sm-9">
+                                            <input type="text" class="form-control" id="details" name="details" placeholder="details" value="">
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-primary" id="btn-save" value="add">Save changes</button>
+                                <input type="hidden" id="product_id" name="tour_id" value="0">
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+
+
         <div id="editEnterpriseModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form method="POST" action="{{URL::to('editenterprises')}}" aria-label="{{ __('Enterprises') }}"  enctype="multipart/form-data">
+
+
+                    <form id="formEdit" method="POST" action="{{URL::to('editenterprises')}}" aria-label="{{ __('Enterprises') }}"  enctype="multipart/form-data">
+                        <!-- <form id="frmEnterprises" name="frmEnterprises" class="form-horizontal" novalidate="">-->
+                        {{ csrf_field() }}
                         <div class="modal-header">						
                             <h4 class="modal-title">Modificar Empresa</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <input type="hidden" class="form-control" name="inputIdEdit" id="inputIdEdit">
                         </div>
                         <div class="modal-body">					
                             <div class="form-group">
                                 <label>Nombre</label>
-                                <input type="text" class="form-control" name="inputName" id="inputNameEdit" required>
+                                <input type="text" class="form-control" name="inputNameEdit" id="inputNameEdit" required>
                             </div>
                             <div class="form-group">
                                 <label>Dirección Web:</label>
-                                <input type="text" class="form-control" name="inputUrl" id="inputUrlEdit"  required/>
+                                <input type="text" class="form-control" name="inputUrlEdit" id="inputUrlEdit"  required/>
+                            </div>
+                            <div class="form-group">
+                                <label>Correo Electronico:</label>
+                                <input type="email" class="form-control" name="inputEmailEdit" id="inputEmailEdit" placeholder="soporte@marca.com"  required/>
                             </div>
                             <div class="form-group">
                                 <label>Observaciones:</label>
-                                <textarea    class="form-control" name="inputObservationEdit" id="inputObservationEdit"  required> </textarea>
+                                <textarea  class="form-control" name="inputObservationEdit" id="inputObservationEdit"  required> </textarea>
                             </div>				
                         </div>
 
                         <div class="modal-footer">
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
-                            <input type="submit" class="btn btn-info" value="Guardar Cambios">
+                            <input type="submit" class="btn btn-save" value="Guardar Cambios">
                         </div>
                     </form>
                 </div>
             </div>
         </div>
         <!-- Delete Modal HTML -->
-        <div id="deleteEmployeeModal" class="modal fade">
+        <div id="deleteEnterpriseModal" class="modal fade">
             <div class="modal-dialog">
                 <div class="modal-content">
-                    <form>
+                    <form id="formEdit" method="POST" action="{{URL::to('deleteenterprises')}}" aria-label="{{ __('Enterprises') }}"  enctype="multipart/form-data">
+                        <!-- <form id="frmEnterprises" name="frmEnterprises" class="form-horizontal" novalidate="">-->
+                        {{ csrf_field() }}
                         <div class="modal-header">						
                             <h4 class="modal-title">Eliminar Empresa</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -534,6 +601,7 @@
                             <p>Esta acción no se podrá deshacer.</p>
                         </div>
                         <div class="modal-footer">
+                            <input type="hidden" class="form-control" name="inputIdDelete" id="inputIdDelete" value="" >
                             <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
                             <input type="submit" class="btn btn-danger" value="Eliminar">
                         </div>

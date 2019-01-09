@@ -32,6 +32,7 @@
         <hr />
         <div class="row margenInferior">
             <a href="{{route('enterprises')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Empresarios</a>
+            <a href="{{route('scoreenterprises')}}" class="btn btn-lg btn-block btn-warning btnPrincipal"><span class="fa fa-eye "></span>&nbsp;Calificar Empresa</a>
         </div>
     </div>
     <div class="col-12 col-md-8 text-center paddingSuperiorGrande">

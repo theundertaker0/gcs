@@ -1,4 +1,5 @@
 <?php
+
 /*
  * Author: Melquizedec Moo Medina
  * Date:  October, 2018
@@ -10,7 +11,9 @@
  * update:      Actualizar los datos de las empresas.
  * 
  */
+
 namespace App\Http\Controllers;
+
 use App\Enterprise;
 use Illuminate\Http\Request;
 
@@ -24,10 +27,19 @@ class EnterprisesController extends Controller {
     public function index() {
         //$user = Enterprise::find(\Auth::user()->id);
         //$data = App\Enterprise::all();
-        $data = Enterprise::orderBy('id','DESC')->paginate(10);
-       // $enterprise = new \App\Enterprise;
-       // $data = $enterprise->get();
+        $data = Enterprise::orderBy('id', 'DESC')->paginate(10);
+        // $enterprise = new \App\Enterprise;
+        // $data = $enterprise->get();
         return view('enterprises.index', compact('data')); //->with('enterprises', $enterprises);
+    }
+
+    public function score() {
+        //$user = Enterprise::find(\Auth::user()->id);
+        //$data = App\Enterprise::all();
+        $data = Enterprise::orderBy('id', 'DESC')->paginate(10);
+        // $enterprise = new \App\Enterprise;
+        // $data = $enterprise->get();
+        return view('enterprises.score', compact('data')); //->with('enterprises', $enterprises);
     }
 
     /**
@@ -39,6 +51,7 @@ class EnterprisesController extends Controller {
         $data = new \App\Enterprise;
         $data->name = $request->post('inputName');
         $data->url = $request->post('inputUrl');
+        $data->email = $request->post('inputEmail');
         $data->observation = $request->post('inputObservation');
         $data->save();
         //return view('enterprises.index');
@@ -71,14 +84,25 @@ class EnterprisesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id) {
-        $data = new \App\Enterprise;
+    public function edit(Request $request) {
+
+        /*     $bills=Bill::where('user_id',\Auth::user()->id)->get();
+          $brands=Enterprise::all();
+          return view('product.edit',['product'=>$product,'bills'=>$bills,'brands'=>$brands]);
+         */
+        $id = $request->post('inputIdEdit');
+        //$id=  Enterprise::find($id);  
+        $data = Enterprise::find($id);
         $data->name = $request->post('inputNameEdit');
         $data->url = $request->post('inputUrlEdit');
+        $data->email = $request->post('inputEmailEdit');
         $data->observation = $request->post('inputObservationEdit');
-        $data->update($id);
-        //return view('enterprises.index');
-        return redirect()->back()->withSuccess('Registro Creado Exitosamente');   
+        $data->score = "0";
+        $data->save();
+
+
+        $data = Enterprise::orderBy('id', 'DESC')->paginate(10);
+        return view('enterprises.index', compact('data'));
     }
 
     /**
@@ -98,8 +122,16 @@ class EnterprisesController extends Controller {
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id) {
-        //
+    public function destroy(Request $request) {
+        $id = $request->post('inputIdDelete');
+        $data = Enterprise::find($id);
+        $data->delete();
+
+        if (Request::ajax()) {
+            return redirect('enterprises')->with('success', 'La Empresa ha sido eliminado');
+        } else {
+            return redirect('enterprises')->with('danger','La Empresa  No se puede eliminar, tiene datos relacionados');
+        }
     }
 
 }

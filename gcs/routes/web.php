@@ -37,8 +37,9 @@ Route::get(' addproduct/{id}','BillController@addproduct')->name('bill.addproduc
 ///////RUTAS  GENERADAS  PARA EL MODULO DE EMPRESAS/////
 Route::get('/enterprises', 'EnterprisesController@index')->name('enterprises');
 Route::post('/createenterprises', 'EnterprisesController@create')->name('createenterprises');
-Route::post('/editenterprises', 'EnterprisesController@edit')->name('editenterprises');
-
+Route::post('/editenterprises/', 'EnterprisesController@edit')->name('editenterprises');
+Route::post('/deleteenterprises/', 'EnterprisesController@destroy')->name('deleteenterprises');
+Route::get('/scoreenterprises', 'EnterprisesController@score')->name('scoreenterprises');
 
 ///////RUTAS GENERADAS PARA EL MÓDULO DE PRODUCTOS/////
 Route::resource('product','ProductController');
